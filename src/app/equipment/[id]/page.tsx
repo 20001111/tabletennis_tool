@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { StarRating } from '@/components/ui/StarRating';
 import Image from 'next/image';
 import React from 'react';
+import { useAuth } from '@/components/AuthContext';
 
 type Category = {
   name: string;
@@ -26,7 +27,7 @@ type Equipment = {
   price: number;
   imageUrl: string | null;
   avgRating: number;
-  specs: any;
+  specs: Record<string, unknown>;
   categories: Category[];
   reviews: Review[];
 };
@@ -37,6 +38,9 @@ export default function EquipmentDetail() {
   const [equipment, setEquipment] = useState<Equipment | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
+  const [userRating, setUserRating] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     async function fetchEquipment() {
@@ -59,6 +63,25 @@ export default function EquipmentDetail() {
       fetchEquipment();
     }
   }, [id]);
+
+  const handleRate = async (rating: number) => {
+    if (!user) return;
+    setSubmitting(true);
+    try {
+      const response = await fetch(`/api/equipment/${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rating }),
+      });
+      if (response.ok) {
+        const updated = await response.json();
+        setEquipment(updated);
+        setUserRating(rating);
+      }
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -157,6 +180,15 @@ export default function EquipmentDetail() {
                     </React.Fragment>
                   ))}
                 </dl>
+              </div>
+            )}
+            {user && (
+              <div className="mb-8">
+                <h2 className="text-xl font-semibold mb-2">あなたの評価</h2>
+                <StarRating rating={userRating} editable onRate={handleRate} />
+                {submitting && (
+                  <p className="text-sm text-gray-500 mt-1">送信中...</p>
+                )}
               </div>
             )}
 
