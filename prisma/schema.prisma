@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Equipment categories
+enum EquipmentType {
+  RUBBER
+  BLADE
+  BALL
+  TABLE
+  ACCESSORIES
+}
+
+// Main equipment model
+model Equipment {
+  id          String         @id @default(cuid())
+  name        String
+  manufacturer String
+  type        EquipmentType
+  description String?
+  price       Float
+  imageUrl    String?
+  specs       Json?          // Store technical specifications as JSON
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  reviews     Review[]
+  avgRating   Float          @default(0)
+  categories  Category[]
+
+  @@index([type])
+  @@index([manufacturer])
+}
+
+// Reviews for equipment
+model Review {
+  id          String    @id @default(cuid())
+  rating      Int       @default(0)
+  comment     String?
+  createdAt   DateTime  @default(now())
+  equipment   Equipment @relation(fields: [equipmentId], references: [id])
+  equipmentId String
+  isVerified  Boolean   @default(false)
+
+  @@index([equipmentId])
+}
+
+// Categories for filtering
+model Category {
+  id        String      @id @default(cuid())
+  name      String      @unique
+  equipment Equipment[]
+}
+
+// Admin users for managing content
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // Hashed password
+  name      String?
+  createdAt DateTime @default(now())
+}

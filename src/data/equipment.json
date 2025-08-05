@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "name": "テナジー05",
+    "manufacturer": "Butterfly",
+    "type": "RUBBER",
+    "description": "バタフライの最高峰ラバー。スピンとスピードを両立した攻撃型ラバー。プロ選手からアマチュアまで幅広く愛用されています。",
+    "price": 7200,
+    "imageUrl": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop",
+    "avgRating": 4.8,
+    "specs": {
+      "厚さ": "2.1mm",
+      "硬度": "47.5°",
+      "重量": "45g",
+      "スポンジ": "High Tension"
+    },
+    "categories": [
+      {"name": "攻撃型"},
+      {"name": "裏ソフト"}
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "rating": 5,
+        "comment": "スピンが非常にかかりやすく、威力のあるドライブが打てます。コントロールも良好で、オールラウンドに使えます。",
+        "createdAt": "2024-01-15T10:30:00Z"
+      },
+      {
+        "id": "2",
+        "rating": 4,
+        "comment": "値段は高いですが、その分性能は抜群です。特にループドライブの質が向上しました。",
+        "createdAt": "2024-01-10T15:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "ファスタークG-1",
+    "manufacturer": "Nittaku",
+    "type": "RUBBER",
+    "description": "ニッタクの人気ラバー。適度なスピードと優れたコントロール性能を持つ中級者向けラバー。",
+    "price": 4800,
+    "imageUrl": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop",
+    "avgRating": 4.3,
+    "specs": {
+      "厚さ": "2.0mm",
+      "硬度": "42°",
+      "重量": "42g",
+      "スポンジ": "Medium"
+    },
+    "categories": [
+      {"name": "中級者向け"},
+      {"name": "裏ソフト"}
+    ],
+    "reviews": [
+      {
+        "id": "3",
+        "rating": 4,
+        "comment": "コントロールしやすく、初中級者にはとても良いラバーです。スピンもそこそこかかります。",
+        "createdAt": "2024-01-12T09:20:00Z"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "インナーフォース レイヤー ZLC",
+    "manufacturer": "Butterfly",
+    "type": "BLADE",
+    "description": "バタフライの7枚合板ラケット。ZLカーボンを使用した攻撃型ラケット。弾みと安定性を両立。",
+    "price": 28000,
+    "imageUrl": "https://images.unsplash.com/photo-1578662996442-348cbefb5be9?w=400&h=300&fit=crop",
+    "avgRating": 4.6,
+    "specs": {
+      "構成": "7枚合板",
+      "重量": "90g",
+      "厚さ": "5.8mm",
+      "グリップ": "FL/ST"
+    },
+    "categories": [
+      {"name": "攻撃型"},
+      {"name": "7枚合板"}
+    ],
+    "reviews": [
+      {
+        "id": "4",
+        "rating": 5,
+        "comment": "非常にバランスの取れたラケットです。弾みも十分で、コントロールも良好。長く使えるラケットです。",
+        "createdAt": "2024-01-08T14:15:00Z"
+      },
+      {
+        "id": "5",
+        "rating": 4,
+        "comment": "少し重いですが、その分安定感があります。中級者以上におすすめ。",
+        "createdAt": "2024-01-05T11:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "ロゼナ",
+    "manufacturer": "Butterfly",
+    "type": "RUBBER",
+    "description": "初心者から中級者まで幅広く使える裏ソフトラバー。適度な回転とコントロール性を持つ。",
+    "price": 3200,
+    "imageUrl": "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop",
+    "avgRating": 4.2,
+    "specs": {
+      "厚さ": "1.9mm",
+      "硬度": "35°",
+      "重量": "38g",
+      "スポンジ": "Soft"
+    },
+    "categories": [
+      {"name": "初心者向け"},
+      {"name": "裏ソフト"}
+    ],
+    "reviews": [
+      {
+        "id": "6",
+        "rating": 4,
+        "comment": "初心者には最適なラバーです。回転もかかりやすく、価格も手頃。",
+        "createdAt": "2024-01-03T16:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "コルベル",
+    "manufacturer": "Butterfly",
+    "type": "BLADE",
+    "description": "5枚合板の守備型ラケット。優れたコントロール性能と適度な弾み。初中級者に人気。",
+    "price": 8500,
+    "imageUrl": "https://images.unsplash.com/photo-1578662996442-348cbefb5be9?w=400&h=300&fit=crop",
+    "avgRating": 4.4,
+    "specs": {
+      "構成": "5枚合板",
+      "重量": "85g",
+      "厚さ": "5.5mm",
+      "グリップ": "FL/ST"
+    },
+    "categories": [
+      {"name": "守備型"},
+      {"name": "5枚合板"}
+    ],
+    "reviews": [
+      {
+        "id": "7",
+        "rating": 4,
+        "comment": "コントロールしやすく、守備がやりやすいラケットです。初心者にもおすすめ。",
+        "createdAt": "2024-01-01T13:20:00Z"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "3スターボール",
+    "manufacturer": "Butterfly",
+    "type": "BALL",
+    "description": "ITTF公認の競技用ボール。公式試合でも使用される高品質なプラスチックボール。",
+    "price": 1200,
+    "imageUrl": "https://images.unsplash.com/photo-1578662996442-348cbefb5be9?w=400&h=300&fit=crop",
+    "avgRating": 4.7,
+    "specs": {
+      "素材": "プラスチック",
+      "直径": "40mm",
+      "重量": "2.7g",
+      "規格": "ITTF公認"
+    },
+    "categories": [
+      {"name": "競技用"},
+      {"name": "プラスチック"}
+    ],
+    "reviews": [
+      {
+        "id": "8",
+        "rating": 5,
+        "comment": "公式試合と同じ品質のボールです。バウンドも安定していて練習に最適。",
+        "createdAt": "2023-12-28T10:15:00Z"
+      }
+    ]
+  }
+]
