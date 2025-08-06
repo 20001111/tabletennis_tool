@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import './globals.css'
+import { AuthProvider } from '@/components/AuthProvider'
+import { NavBar } from '@/components/NavBar'
 
 export const metadata: Metadata = {
   title: '卓球用具レビュー',
@@ -15,27 +16,14 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <div className="min-h-screen bg-gray-100">
-          <nav className="bg-white shadow-lg">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="flex justify-between h-16">
-                <div className="flex">
-                  <Link href="/" className="flex items-center">
-                    <span className="text-xl font-bold text-gray-800">卓球用具レビュー</span>
-                  </Link>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Link href="/equipment" className="text-gray-600 hover:text-gray-900">
-                    用具一覧
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </nav>
-          <main className="flex-grow">
-            {children}
-          </main>
-        </div>
+        <AuthProvider>
+          <div className="min-h-screen bg-gray-100">
+            <NavBar />
+            <main className="flex-grow">
+              {children}
+            </main>
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );
