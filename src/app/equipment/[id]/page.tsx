@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import { StarRating } from '@/components/ui/StarRating';
+import ReviewForm, { Review } from '@/components/equipment/ReviewForm';
 import React from 'react';
 import { StarRating } from '@/components/ui/StarRating';
 import { ReviewForm } from '@/components/ReviewForm';
@@ -10,13 +12,6 @@ import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 
 type Category = {
   name: string;
-};
-
-type Review = {
-  id: string;
-  rating: number;
-  comment: string | null;
-  createdAt: string;
 };
 
 type Equipment = {
@@ -33,12 +28,14 @@ type Equipment = {
   reviews: Review[];
 };
 
+type SortBy = 'newest' | 'oldest' | 'high' | 'low';
+
 export default function EquipmentDetail() {
   const params = useParams();
   const id = params.id as string;
   const [equipment, setEquipment] = useState<Equipment | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+
 
   useEffect(() => {
     async function fetchEquipment() {
@@ -64,24 +61,7 @@ export default function EquipmentDetail() {
     if (id) fetchEquipment();
   }, [id]);
 
-  const handleReviewSubmit = (rating: number, comment: string) => {
-    if (!equipment) return;
-    const newReview: Review = {
-      id: Date.now().toString(),
-      rating,
-      comment,
-      createdAt: new Date().toISOString(),
-    };
-    const updatedReviews = [...equipment.reviews, newReview];
-    const avgRating =
-      updatedReviews.reduce((sum, r) => sum + r.rating, 0) / updatedReviews.length;
-    setEquipment({ ...equipment, reviews: updatedReviews, avgRating });
 
-    const stored = localStorage.getItem(`reviews-${id}`);
-    const storedReviews: Review[] = stored ? JSON.parse(stored) : [];
-    localStorage.setItem(
-      `reviews-${id}`,
-      JSON.stringify([...storedReviews, newReview])
     );
   };
 
@@ -99,7 +79,7 @@ export default function EquipmentDetail() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-4">{equipment.name}</h1>
 
@@ -111,11 +91,12 @@ export default function EquipmentDetail() {
                   alt={equipment.name}
                   fill
                   className="object-contain"
-                  sizes="(max-width:768px)100vw, 50vw"
+
                   priority
                 />
               </div>
             )}
+
             <div>
               <div className="mb-4">
                 <h2 className="text-xl font-semibold mb-2">基本情報</h2>
@@ -128,27 +109,17 @@ export default function EquipmentDetail() {
                   <dd>¥{equipment.price.toLocaleString()}</dd>
                   <dt className="text-gray-600">平均評価</dt>
                   <dd className="flex items-center">
-                    <StarRating rating={equipment.avgRating} />
-                    <span className="ml-2">({equipment.avgRating.toFixed(1)})</span>
-                  </dd>
-                </dl>
-              </div>
+
               {equipment.categories.length > 0 && (
                 <div className="mb-4">
                   <h2 className="text-xl font-semibold mb-2">カテゴリー</h2>
                   <div className="flex flex-wrap gap-2">
-                    {equipment.categories.map((category) => (
-                      <span
-                        key={category.name}
-                        className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full"
-                      >
+
                         {category.name}
                       </span>
                     ))}
                   </div>
-                </div>
-              )}
-            </div>
+
           </div>
 
           {equipment.description && (
@@ -199,6 +170,8 @@ export default function EquipmentDetail() {
           </div>
         </div>
       </div>
+      </div>
     </div>
   );
 }
+
