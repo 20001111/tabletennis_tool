@@ -26,7 +26,7 @@ type Equipment = {
   price: number;
   imageUrl: string | null;
   avgRating: number;
-  specs: any;
+    specs: Record<string, unknown>;
   categories: Category[];
   reviews: Review[];
 };
