@@ -26,7 +26,7 @@ type Equipment = {
   price: number;
   imageUrl: string | null;
   avgRating: number;
-    specs: Record<string, unknown>;
+  specs: Record<string, unknown>;
   categories: Category[];
   reviews: Review[];
 };
@@ -88,7 +88,7 @@ export default function EquipmentDetail() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
             <h1 className="text-3xl font-bold mb-4">{equipment.name}</h1>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               {equipment.imageUrl && (
                 <div className="relative h-80">
@@ -102,7 +102,7 @@ export default function EquipmentDetail() {
                   />
                 </div>
               )}
-              
+
               <div>
                 <div className="mb-4">
                   <h2 className="text-xl font-semibold mb-2">基本情報</h2>
@@ -126,10 +126,7 @@ export default function EquipmentDetail() {
                     <h2 className="text-xl font-semibold mb-2">カテゴリー</h2>
                     <div className="flex flex-wrap gap-2">
                       {equipment.categories.map((category: Category) => (
-                        <span
-                          key={category.name}
-                          className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full"
-                        >
+                        <span key={category.name} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
                           {category.name}
                         </span>
                       ))}
@@ -168,13 +165,9 @@ export default function EquipmentDetail() {
                     <div key={review.id} className="border-b pb-6">
                       <div className="flex items-center mb-2">
                         <StarRating rating={review.rating} />
-                        <span className="ml-2 text-gray-600">
-                          {new Date(review.createdAt).toLocaleDateString()}
-                        </span>
+                        <span className="ml-2 text-gray-600">{new Date(review.createdAt).toLocaleDateString()}</span>
                       </div>
-                      {review.comment && (
-                        <p className="text-gray-600">{review.comment}</p>
-                      )}
+                      {review.comment && <p className="text-gray-600">{review.comment}</p>}
                     </div>
                   ))}
                 </div>
